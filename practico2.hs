@@ -71,3 +71,35 @@ edad (x1,y1,z1) (x2,y2,z2) |z1 == z2 = 0
 -- Ahora defina la funcion xor2 que calcule la disyuncion excluyente pero sin
 --que considere todos los posibles valores de las entradas. Cual sera la diferencias
 --entre ambas definiciones?
+
+-- comienzo acá
+-- ejercicio 8: Defina una función que dado un número natural decida si el mismo es primo o no.
+-- usamos una función auxiliar que devuelve los divisores de un número
+divs :: Int -> [Int]
+divs n = [x | x <- [1..n], mod n x == 0]
+
+-- luego vemos que, si tiene 2 o menos divisores, entonces será primo
+primo :: Int -> Bool
+primo x = length (divs x) <= 2
+
+-- ejercicio 9: Defina una función que dado un número natural n retorne la lista de todos los números naturales primos menores que n.
+
+-- reutilizamos la función primo para calcular los primos menores que el valor n ingresado
+primosMenores :: Int -> [Int]
+primosMenores n = [x | x <- [1..n], primo x]
+
+-- ejercicio 10: Defina una función que dada una lista retorne la reversa de la misma.
+
+reversa :: [a] -> [a]
+reversa [] = []
+reversa (x:xs) = reversa xs ++ [x]
+
+-- ejercicio 11: Defina una función que dada una lista de números retorne una lista con los primos.
+
+primosEnLista :: [Int] -> [Int]
+primosEnLista [] = []
+primosEnLista (x:xs) = [x | x <- (x:xs), primo x]
+
+-- ejercicio 11: Defina una función que dada una lista decida si es palíndromo o no.
+-- palindromos :: (Eq a) => [a] -> Bool
+
